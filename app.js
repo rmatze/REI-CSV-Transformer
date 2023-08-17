@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const csv = require('csv-parser');
 const fs = require('fs');
+const path = require('path');
 
 const app = express();
 const port = 3000;
@@ -21,6 +22,10 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/download/template.csv', (req, res) => {
+  const templateFilePath = path.join(__dirname, 'download', 'template.csv'); // Adjust the path to match your file location
+  res.sendFile(templateFilePath);
+});
 
 app.post('/transform', upload.single('csvFile'), (req, res) => {
   const inputFilePath = req.file.path;
