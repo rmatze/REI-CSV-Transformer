@@ -21,11 +21,6 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-// Serve the template CSV file with the correct MIME type
-app.get('/template.csv', (req, res) => {
-  const templateFilePath = path.join(__dirname, '/download/template.csv'); // Replace with the actual path to your template CSV file
-  res.sendFile(templateFilePath);
-});
 
 app.post('/transform', upload.single('csvFile'), (req, res) => {
   const inputFilePath = req.file.path;
