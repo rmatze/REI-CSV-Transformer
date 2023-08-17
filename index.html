@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLS APN Processor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    /* Additional styles for the APN format input */
+    .apn-input-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .apn-label {
+      margin-right: 10px;
+    }
+
+    #formatString {
+      flex: 1;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>MLS APN Processor</h1>
+    <h5>San Bernardino, CA</h5>
+    <form action="/transform" method="POST" enctype="multipart/form-data">
+      <label for="csvFile">CSV file to transform:</label>
+      <input type="file" name="csvFile" id="csvFile" accept=".csv" required>
+      
+      <!-- APN Format input with added styles -->
+      <div class="apn-input-container">
+        <label class="apn-label" for="formatString">APN format:</label>
+        <input type="text" name="formatString" id="formatString" value="####-###-##-####" required>
+      </div>
+      
+      <button type="submit">Process CSV</button>
+    </form>
+  </div>
+</body>
+</html>
