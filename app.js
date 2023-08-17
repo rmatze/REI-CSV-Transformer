@@ -6,7 +6,7 @@ const fs = require('fs');
 const app = express();
 const port = 3000;
 
-//app.use(express.static('public'));
+app.use(express.static('public'));
 
 const storage = multer.diskStorage({
   destination: 'uploads/',
@@ -19,6 +19,12 @@ const upload = multer({ storage });
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
+});
+
+// Serve the template CSV file with the correct MIME type
+app.get('/template.csv', (req, res) => {
+  const templateFilePath = path.join(__dirname, '/download/template.csv'); // Replace with the actual path to your template CSV file
+  res.sendFile(templateFilePath);
 });
 
 app.post('/transform', upload.single('csvFile'), (req, res) => {
