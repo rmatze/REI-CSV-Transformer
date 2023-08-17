@@ -31,7 +31,7 @@ app.post('/transform', upload.single('csvFile'), (req, res) => {
   const inputFilePath = req.file.path;
   const outputFilePath = 'output.csv';
 
-  // const userFormat = "####-###-##-####"; //req.body.formatString; // Retrieve the user-specified format
+  const userFormat = req.body.formatString; // Retrieve the user-specified format
 
   const header = ['APN#', 'County', 'State'];
   // const selectedColumns = [];
@@ -73,10 +73,10 @@ app.post('/transform', upload.single('csvFile'), (req, res) => {
         // Create a map of APNs
         const apnMap = new Map();
         data.forEach((row) => {
-          apnMap.set(row.APN, row.STATE);
+          apnMap.set(formatString(row.APN, userFormat), row.STATE);
         });
 
-        sortedApnMap = new Map([...apnMap.entries()].sort((a, b) => b[0] - a[0]));
+        sortedApnMap = new Map([...apnMap.entries()].sort((a, b) => b[0].length - a[0].length));
 
         // Generate CSV content
         const csvContent = header.join(',') + '\n' +
