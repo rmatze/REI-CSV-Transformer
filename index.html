@@ -52,6 +52,21 @@
       border: 1px solid #ccc;
       border-radius: 4px;
     }
+
+    .numbered-list {
+      max-width: 400px;
+    }
+
+    .numbered-list ol {
+      list-style-position: inside;
+      padding-left: 0;
+    }
+
+    .numbered-list li {
+      text-align: left;
+      margin-left: 20px; /* Adjust as needed */
+      padding-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -76,7 +91,21 @@
       <button>Download Template CSV</button>
     </a>
 
-    <h6>v0.1.0</h6>
+    <h3>How it works</h3>
+
+    <p>
+      <div class="numbered-list">
+        <ol>
+          <li>Download the template CSV or use an existing you've already created</li>
+          <li>Copy in your list of APNs in the first column.  Makes sure the column header is named APN.  If you have a CSV that already contains a column with the header APN, you can use that.</li>
+          <li>Upload the CSV file with your APNs</li>
+          <li>The APN format should be correct for San Bernadino, but update as needed.  The hashes (#) will be replaced with the APN, and the dashes (-) will print between the hashes.</li>
+          <li>Click "Process CSV" and download the new CSV file that contains formatted APNs.  This first version will be for San Bernadino, CA so those columns will be add automatically.</li>
+        </ol>
+      </div>
+    </p>
+
+    <h6>v0.1.1</h6>
 
   </div>
 </body>
